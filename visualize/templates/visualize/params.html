@@ -1,0 +1,20 @@
+{% extends "visualize/base.html" %}
+{% load extras %}
+{% block content %}
+
+    <div class="row"><h4>{{ antenna_type|inter }}</h4></div>
+
+    <div class="row">
+        <div class="col">
+            <form method="post" action="{% url 'visualize:param-view' antenna_type %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <label for="{{ form.clatter_image_required.id_for_label }}">Label for myfield : </label>
+                {{ form.clatter_image_required }}
+
+                <input id="prop-submit" type="submit">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

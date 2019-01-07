@@ -1,0 +1,78 @@
+{% extends "visualize/base.html" %}
+{% load extras %}
+{% block content %}
+
+    <div class="row">
+        <div class="col"><h4>Результаты: {{ antenna_type|inter }}</h4>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-7">
+            <img src="data:image/png;base64,{{ result.image }}" />
+        </div>
+
+        <div class="col-md">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Параметр</th>
+                  <th scope="col">Значение</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for param in result.context %}
+              <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{ param.0 }}</td>
+                  <td>{{ param.1 }}</td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+    {% if antenna_type != 'antenna' %}
+<h5>Таблица помех</h5>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    {% for col in result.clutter_info.columns %}
+                    <th scope="col">{{ col }}</th>
+                    {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+              {% for param in result.clutter_info.parameters %}
+              <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  {% for value in param %}
+                      <td>{{ value }}</td>
+                  {% endfor %}
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+{% if result.clutter_image %}
+<p>
+<h5>Осциллограммы помех</h5>
+<div class="raw">
+    <img src="data:image/png;base64,{{ result.clutter_image }}" />
+</div>
+{% endif %}
+{% if result.scatter_image %}
+<p>
+<h5>Диаграмма рассеяния</h5>
+<div class="raw">
+    <img src="data:image/png;base64,{{ result.scatter_image }}" />
+</div>
+{% endif %}
+{% endblock %}

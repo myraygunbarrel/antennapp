@@ -1,0 +1,1 @@
+web: gunicorn antennapp.wsgi --log-file -

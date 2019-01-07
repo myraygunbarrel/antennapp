@@ -1,0 +1,15 @@
+{% extends "visualize/base.html" %}
+{% load extras %}
+{% block content %}
+
+<h3>Ошибка ввода: </h3>
+   {% for key, value in  errors.items %}
+        <div class="row">
+            <div class="col-sm">
+                <strong>{{ key|inter  }} </strong>
+                {{ value }}
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

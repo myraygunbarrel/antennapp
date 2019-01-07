@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Antennas</title>
+    <link rel="shortcut icon" type="image/png" href="#"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'visualize/base.css' %}">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background=color: #DCDCDC;">
+    <a class="navbar-brand" href="{% url 'visualize:input-view' %}">Antennas Calculator</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav mr-auto">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-3 my-sm-20" type="submit">Search</button>
+            </form>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">log in</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">register</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<hr>
+
+<div class="container-fluid">
+
+    {% block content %}{% endblock content %}
+
+</div>
+
+<!-- Footer -->
+<footer class="page-footer">
+  <div class="footer-copyright text-center py-3">© 2018 Thank you for your time
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>

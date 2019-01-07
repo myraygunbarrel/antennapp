@@ -1,0 +1,23 @@
+{% extends "visualize/base.html" %}
+
+{% block content %}
+
+    <div class="col">
+        <form method="post"  action="{% url 'visualize:input-view' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!--{% for choice in form.antenna_type.field.choices %}-->
+
+            <!--<div class="form-check">-->
+                <!--<input name='{{ form.antenna_type.name }}' class="form-check-input" type="checkbox" value='{{ choice.0 }}' id="{{ choice.id_for_label }}">-->
+                <!--<label class="form-check-label" for="{{ choice.id_for_label }}">{{ choice.1 }}</label>-->
+            <!--</div>-->
+            <!--{% endfor %}-->
+
+
+            <input id="type-submit" type="submit">
+        </form>
+    </div>
+
+
+{% endblock %}
