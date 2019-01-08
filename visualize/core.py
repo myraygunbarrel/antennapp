@@ -67,8 +67,9 @@ class DesignedControlledConnections(DesignedAntenna):
         self.antenna_params['a_rand'] = np.random.normal(0, a_rand_sigma, size=(N, 1))
         self.antenna_params['ph_rand'] = np.random.normal(0, np.radians(ph_rand_sigma), size=(N, 1))
 
-        self.antenna_params['boresight_err'] = self.generate_boresight_errors(
-            len(self.antenna_params.get('ph_interference')))
+        if self.antenna_params.get('boresight_err'):
+            self.antenna_params['boresight_err'] = self.generate_boresight_errors(
+                len(self.antenna_params.get('ph_interference')))
 
     def generate_boresight_errors(self, amount):
         random_sample = None
@@ -110,7 +111,7 @@ class DesignedControlledConnections(DesignedAntenna):
                                              - self.base_antenna.diagram[self.antenna.cl_index])] + [cancelling_av_rel]
                       })
 
-        if isinstance(self, DesignedControlledConnections):
+        if self._bore_err:
             bore_err = ['Δ/' + str(round(self.main_lobe / np.absolute(n), 2)) if n != 0
                         else 0 for n in self._bore_err]
             bore_err_col = pd.Series(bore_err + ['—'])

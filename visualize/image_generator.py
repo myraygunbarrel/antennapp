@@ -115,7 +115,7 @@ class ScatterImage(AbstractImage):
         radiators = pd.DataFrame(np.real(self._model.clatter[:, 5:14]),
                                  columns=['-4', '-3', '-2', '-1', '0', '1', '2', '3', '4'])
 
-        scatter_matrix(radiators, alpha=0.9, grid=True, diagonal='kde', ax=ax)
+        scatter_matrix(radiators, alpha=0.5, grid=True, diagonal='kde', ax=ax)
 
 
 

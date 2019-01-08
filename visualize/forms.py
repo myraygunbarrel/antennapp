@@ -50,4 +50,4 @@ class AdaptiveFilteringForm(ControlledConnectionsForm):
                               required=True)
     clatter_image_required = forms.BooleanField(label='Отобразить осциллограммы помех', required=False)
     scatter_image_required = forms.BooleanField(label='Визуализировать матрицу рассеяния', required=False)
-    iteration, a_rand, ph_rand = None, None, None
+    iteration, a_rand, ph_rand, boresight_err = None, None, None, None

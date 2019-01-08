@@ -18,10 +18,7 @@ class AbstractAntenna(ABC):
 
     @staticmethod
     def value_quantizer(values, sector):
-        index = []
-        for value in values:
-            i = np.argmin(np.absolute(sector - value))
-            index.append(i)
+        index = [np.argmin(np.absolute(sector - value)) for value in values]
         return index
 
     @staticmethod
