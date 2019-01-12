@@ -11,7 +11,7 @@ class InputView(View):
         return render(request, 'visualize/form.html', {'form': form})
 
     def post(self, request):
-        form = InputForm(request.POST)
+        # form = InputForm(request.POST)
         # from pdb import set_trace; set_trace()
         antenna_type = request.POST.get('antenna_type')
         return redirect('visualize:param-view', antenna_type=antenna_type)
@@ -42,7 +42,8 @@ class ParamView(View):
 
     def post(self, request, **kwargs):
         form = self.form(request.POST)
-        if form.is_valid():
+        if form.is_valid() and form.cleaned_data:
+            request.session.create()
             request.session['antenna_data'] = form.cleaned_data
             return redirect('result/')
         else:
