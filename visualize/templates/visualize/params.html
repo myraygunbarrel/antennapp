@@ -2,10 +2,10 @@
 {% load extras %}
 {% block content %}
 
-    <div class="row"><h4>{{ antenna_type|inter }}</h4></div>
-
     <div class="row">
         <div class="col">
+            <h4>{{ antenna_type|inter }}</h4>
+            <p>
             <form method="post" action="{% url 'visualize:param-view' antenna_type %}">
                 {% csrf_token %}
                 {{ form.as_p }}
