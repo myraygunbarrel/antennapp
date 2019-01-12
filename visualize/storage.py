@@ -1,5 +1,4 @@
 import redis
-import os
 from django.conf import settings
 
 
@@ -11,6 +10,7 @@ class Storage:
 
     def set(self, key, value):
         self.conn.set(key, value)
+        self.conn.expire(key, 600)
 
     def get(self, key):
         return self.conn.get(key)

@@ -153,7 +153,6 @@ def create_antenna(antenna_params, antenna_type):
         factory = DesignedControlledConnections
     if antenna_type == 'adaptive_filtering':
         factory = DesignedAdaptiveFiltering
-    # from pdb import set_trace;
-    # set_trace()
+
     return factory(antenna_params)
 
