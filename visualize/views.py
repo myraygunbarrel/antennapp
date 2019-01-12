@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponseNotFound
 from django.views import View
+import random
+import string
+import json
 from .forms import InputForm, AntennaForm, ControlledConnectionsForm, AdaptiveFilteringForm
 from .core import create_antenna
+from .storage import cache
 
 
 class InputView(View):
@@ -43,17 +47,17 @@ class ParamView(View):
     def post(self, request, **kwargs):
         form = self.form(request.POST)
         if form.is_valid() and form.cleaned_data:
-            request.session.create()
-            request.session['antenna_data'] = form.cleaned_data
-            return redirect('result/')
+            user_key = ''.join(random.choices(string.ascii_lowercase + string.digits, k=16))
+            cache.set(user_key, json.dumps(form.cleaned_data))
+            return redirect(f'result/{user_key}')
         else:
             return render(request, 'visualize/error.html', {'errors': form.errors})
 
 
 class ResultView(View):
-    def get(self, request, antenna_type):
+    def get(self, request, user_key, antenna_type):
 
-        _model = create_antenna(request.session.get('antenna_data'), antenna_type)
+        _model = create_antenna(json.loads(cache.get(user_key)), antenna_type)
 
         context = {
             'result': _model,
