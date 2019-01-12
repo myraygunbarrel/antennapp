@@ -111,7 +111,7 @@ class DesignedControlledConnections(DesignedAntenna):
                                              - self.base_antenna.diagram[self.antenna.cl_index])] + [cancelling_av_rel]
                       })
 
-        if self._bore_err:
+        if self._bore_err is not None:
             bore_err = ['Δ/' + str(round(self.main_lobe / np.absolute(n), 2)) if n != 0
                         else 0 for n in self._bore_err]
             bore_err_col = pd.Series(bore_err + ['—'])
