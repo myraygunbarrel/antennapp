@@ -57,10 +57,17 @@ class ParamView(View):
 class ResultView(View):
     def get(self, request, user_key, antenna_type):
 
-        _model = create_antenna(json.loads(cache.get(user_key)), antenna_type)
+        try:
+            antenna_params = json.loads(cache.get(user_key))
+        except TypeError:
+            return render(request, 'visualize/error.html',
+                          {'errors': {antenna_type: 'Время сессии истекло'}})
+
+        _model = create_antenna(antenna_params, antenna_type)
 
         context = {
             'result': _model,
             'antenna_type': antenna_type
         }
+
         return render(request, 'visualize/results.html', context)
