@@ -168,13 +168,11 @@ class SubArrayControlledConnections(ControlledConnections):
 
 
 class AdaptiveAntenna(AbstractAntenna):
-    def __init__(self, n_array, sample_size, ph_interference, a_apd=None,
+    def __init__(self, n_array, ph_interference, sample_size=200, a_apd=None,
                  ph_apd=None, d_lambda=0.6, clatter=None, random_state=42,
                  SNR_db=20, resolution=10000, *args, **kwargs):
         super().__init__(n_array=n_array, d_lambda=d_lambda, resolution=resolution,
                          a_apd=a_apd, ph_apd=ph_apd)
-        # from pdb import set_trace;
-        # set_trace()
         self.sample_size = sample_size
 
         self.Fi_scan = None

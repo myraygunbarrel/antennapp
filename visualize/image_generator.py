@@ -9,7 +9,6 @@ from io import BytesIO
 import base64
 import warnings
 warnings.filterwarnings("ignore")
-from functools import wraps
 
 
 matplotlib.use('Agg')
@@ -110,7 +109,7 @@ class ScatterImage(AbstractImage):
 
     @binary_saver
     def get_image(self):
-        self.fig = plt.figure(figsize=(10, 10))
+        self.fig = plt.figure(figsize=(8, 8))
         ax = self.fig.add_subplot(1, 1, 1)
         radiators = pd.DataFrame(np.real(self._model.clatter[:, 5:14]),
                                  columns=['-4', '-3', '-2', '-1', '0', '1', '2', '3', '4'])
