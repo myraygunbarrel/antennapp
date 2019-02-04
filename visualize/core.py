@@ -1,5 +1,5 @@
 import numpy as np
-from numpy import log10, round
+from numpy import log10, round, abs
 import pandas as pd
 
 from .image_generator import DiagramImage, ClutterImage, ScatterImage
@@ -45,7 +45,9 @@ class DesignedAntenna:
         return N
 
     def main_lobe_calc(self):
-        ind_3dB = self.antenna.value_quantizer([-3], self.diagram)
+        field_of_search = 500
+        sector = self.diagram[self.antenna.scan_ind[0]-field_of_search: self.antenna.scan_ind[0]]
+        ind_3dB = self.antenna.scan_ind[0] - field_of_search + self.antenna.value_quantizer([-3], sector)
         main_lobe = abs(2 * (self.antenna.theta_deg[self.antenna.scan_ind[0]] - self.antenna.theta_deg[ind_3dB])[0])
         return main_lobe
 
@@ -73,21 +75,18 @@ class DesignedControlledConnections(DesignedAntenna):
 
     def generate_boresight_errors(self, amount):
         random_sample = None
-        self._bore_err = np.zeros(amount)
         angle_step = self.base_antenna.antenna.theta_deg[-2] - self.base_antenna.antenna.theta_deg[-1]
 
         if self.antenna_params.get('boresight_err') == 'small_err':
             random_sample = np.random.choice([-3, -2, 2, 3], amount)
-            self._bore_err = angle_step * random_sample
 
         if self.antenna_params.get('boresight_err') == 'med_err':
             random_sample = np.random.choice([-5, -4, 4, 5], amount)
-            self._bore_err = angle_step * random_sample
 
         if self.antenna_params.get('boresight_err') == 'large_err':
             random_sample = np.random.choice([-10, -9, -8, 8, 9, 10], amount)
-            self._bore_err = angle_step * random_sample
 
+        self._bore_err = np.zeros(amount) if random_sample is None else angle_step * random_sample
         return random_sample
 
     def get_context(self):
