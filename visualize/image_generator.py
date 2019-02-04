@@ -92,7 +92,7 @@ class ClutterImage(AbstractImage):
 
     @binary_saver
     def get_image(self):
-        self.fig = plt.figure(figsize=(10, 7))
+        self.fig = plt.figure(figsize=(7, 7))
 
         amount = len(self._model.cl_index)
 
