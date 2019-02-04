@@ -14,25 +14,25 @@ The algorithm of supression was patented and described in papers.
 
 You can estimate AESA pattern with nulls formed in required directions.
 
-![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/cc1.jpg)
+![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/cc1.png)
 
 Detailed information about suppressed interferences is available as well.
 
-![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/cc2.jpg)
+![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/cc2.png)
 
 All input values got from user input.
 
-![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/ccform.jpg)
+![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/ccform.png)
 
 **AESA with Adaptive Filtering**
 
 By Antennapp you can estimate parameters of an Adaptive Antenna based on classical algorithm of inversion of a covariance matrix.
 
-![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/af1.jpg)
+![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/af1.png)
 
 Oscillograms of clutter (cleaned out of internal antenna noise) and scatter matrix of signals in antenna elements are available for vizualization.
 
-![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/af2.jpg)
+![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/af2.png)
 
 **Ordinary AESA**
 
