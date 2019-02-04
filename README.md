@@ -5,12 +5,9 @@ Models available for visualization:
 
 
 
-**AESA with Controlled Connections**
+- **AESA with Controlled Connections**
 
-This is a new AESA type performed supression of active jamming acting from multiple directions.
-The algorithm of supression was patented and described in papers.
-
-![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/patent.jpg)
+This is a new AESA type performed suppression of active jamming acting from multiple directions.
 
 You can estimate AESA pattern with nulls formed in required directions.
 
@@ -24,18 +21,22 @@ All input values got from user input.
 
 ![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/ccform.png)
 
-**AESA with Adaptive Filtering**
+- **AESA with Adaptive Filtering**
 
 By Antennapp you can estimate parameters of an Adaptive Antenna based on classical algorithm of inversion of a covariance matrix.
 
 ![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/af1.png)
 
-Oscillograms of clutter (cleaned out of internal antenna noise) and scatter matrix of signals in antenna elements are available for vizualization.
+Oscillograms of clutter (cleaned out of internal antenna noise) and scatter matrix of signals in antenna elements are available for visualization.
 
 ![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/af2.png)
 
-**Ordinary AESA**
+- **Ordinary AESA**
 
 You can design an ordinary AESA to estimate an influence of internal phase and amplitude errors and calculate a main lobe and other parameters.
 
 ![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/aesa.png)
+
+The "Controlled connections" algorithm of clutter suppression was patented and described in papers.
+
+![alt text](https://github.com/myraygunbarrel/antennapp/blob/master/images/patent.jpg)
